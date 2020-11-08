@@ -3,5 +3,5 @@
 ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
 # --- BEGIN PVE ---
-193.191.177.204 sam-janssens.uclllabs.be sam-janssens
+193.191.177.204 sam-janssens.sb.uclllabs.be sam-janssens
 # --- END PVE ---
