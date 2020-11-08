@@ -6,3 +6,7 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+zone "sam-janssens.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/zones/db.ns.sam-janssens.sb.uclllabs.be";
+};
