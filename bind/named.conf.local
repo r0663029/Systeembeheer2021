@@ -10,3 +10,5 @@ zone "sam-janssens.sb.uclllabs.be" {
 	type master;
 	file "/etc/bind/zones/db.ns.sam-janssens.sb.uclllabs.be";
 };
+
+include "/etc/bind/named.conf.mrt-zones";

@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# check if running as root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit 0
+fi
+
+# get domain
+if [[ "$1" != "" ]]; then
+  domain="$1"
+else
+  echo "No argument given"
+  exit 0
+fi
+
+# append zone to named.conf
+echo "" >> /etc/bind/named.conf.mrt-zones
+echo "// $domain config"  >> /etc/bind/named.conf.mrt-zones
+echo "zone $domain.sam-janssens.sb.uclllabs.be. {
+	type master;
+	file \"/etc/bind/zones/db.mrt.$domain.sam-janssens.sb.uclllabs.be\";
+};" >> /etc/bind/named.conf.mrt-zones
+
+# create zonefile
+echo "\$TTL 300
+@	IN	SOA	ns.$domain.sam-janssens.sb.uclllabs.be. root.sam-janssens.sb.uclllabs.be.(
+			001		; Serial
+			604800		; Refresh
+			600		; Retry
+			600		; Expire
+			604800)		; Negative Cache TTl
+;
+
+@	IN	NS	ns.$domain.sam-janssens.sb.uclllabs.be.
+@	IN	NS	ns.sam-janssens.sb.uclllabs.be.
+
+ns	IN	A	193.191.177.204
+@	IN	A	193.191.177.204" > /etc/bind/zones/db.mrt.$domain.sam-janssens.sb.uclllabs.be
+
+# delegation
+echo "$domain	IN	NS	ns.sam-janssens.sb.uclllabs.be." >> /etc/bind/zones/db.ns.sam-janssens.sb.uclllabs.be
+
+# increase serial
+serial=$(grep "Serial" /etc/bind/zones/db.ns.sam-janssens.sb.uclllabs.be | tr -s [:blank] | cut -d \; -f 1)
+newserial=$((serial + 1))
+sed -i "s/.*Serial.*/\t\t\t	$newserial/g" /etc/bind/zones/db.ns.sam-janssens.sb.uclllabs.be
+
+# restart bind9
+systemctl restart bind9
