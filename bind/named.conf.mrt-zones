@@ -1,0 +1,7 @@
+
+
+// subzoneahher5 config
+zone subzoneahher5.sam-janssens.sb.uclllabs.be. {
+	type master;
+	file "/etc/bind/zones/db.subzoneahher5.sam-janssens.sb.uclllabs.be";
+};

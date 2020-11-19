@@ -1,7 +1,8 @@
 #!/bin/bash
 
+# check if root
 if [ "$EUID" -ne 0 ]
-  then echo "Please run as root or sudo";
+  then echo "Please run as root";
   exit 1;
 fi
 
@@ -38,5 +39,5 @@ if [[ $1 = "-t" ]]; then
         systemctl restart bind9
 
 else
-        echo -e "This is not a valid use, try something like dns_add_record -t A test 12.34.56.78 foobar.slimme-rik.sb.uclllabs.be"
+        echo -e "Error: Try something like dns_add_record -t A test 12.34.56.78 foobar.slimme-rik.sb.uclllabs.be"
 fi

@@ -23,6 +23,20 @@
 ### tuple ### allow tcp 80,443 0.0.0.0/0 any 0.0.0.0/0 Apache%20Full - in
 -A ufw-user-input -p tcp -m multiport --dports 80,443 -j ACCEPT -m comment --comment 'dapp_Apache%20Full'
 
+### tuple ### allow any 3306 0.0.0.0/0 any 193.191.177.6 in
+-A ufw-user-input -p tcp --dport 3306 -s 193.191.177.6 -j ACCEPT
+-A ufw-user-input -p udp --dport 3306 -s 193.191.177.6 -j ACCEPT
+
+### tuple ### allow any 3306 0.0.0.0/0 any 193.191.177.1 in
+-A ufw-user-input -p tcp --dport 3306 -s 193.191.177.1 -j ACCEPT
+-A ufw-user-input -p udp --dport 3306 -s 193.191.177.1 -j ACCEPT
+
+### tuple ### allow tcp 25 0.0.0.0/0 any 0.0.0.0/0 Postfix - in
+-A ufw-user-input -p tcp --dport 25 -j ACCEPT -m comment --comment 'dapp_Postfix'
+
+### tuple ### allow udp 123 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p udp --dport 123 -j ACCEPT
+
 ### END RULES ###
 
 ### LOGGING ###
