@@ -1,4 +1,4 @@
-root:$6$INCFrcCe8KkhGVaS$KbUvTPxZ8WV4GQ.qmE/NakM/1QrpkwegWJhTACk.BjTzkj4E6U4Qr9UCy3ihm6ccAtYv38GehLnqLbDPlao7M0:18535:0:99999:7:::
+root:$6$8tyJTFVd4BCSVsHY$HIPjX..Udbbg.k1ych.81GGzeIOBzL/ww2c/ja8XfFdPTeibfFi6fOXLdhop.2yBgP1YhRiy43Ucq7C1AZ74Y.:18585:0:99999:7:::
 daemon:*:18377:0:99999:7:::
 bin:*:18377:0:99999:7:::
 sys:*:18377:0:99999:7:::
@@ -31,3 +31,5 @@ check:$6$fdvQSoeOO2Ba6CLy$s7WzB3wGFP8MO4FnhVZicN0DQiU9bRK04y7xal/yvBblSi7FR72HnW
 ntp:*:18574:0:99999:7:::
 bind:*:18574:0:99999:7:::
 mysql:!:18582:0:99999:7:::
+dovecot:*:18585:0:99999:7:::
+dovenull:*:18585:0:99999:7:::
