@@ -1,6 +1,6 @@
 $TTL	604800
 @	IN	SOA	ns.sam-janssens.sb.uclllabs.be. root.ns.sam-janssens.sb.uclllabs.be. (
-26; Serial
+27; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2420200		; Expire
@@ -17,6 +17,8 @@ supersecure.sam-janssens.sb.uclllabs.be.         CAA     1 issue "letsencrypt.or
 supersecure.sam-janssens.sb.uclllabs.be.         CAA     1 iodef "mailto:root@sam-janssens.sb.uclllabs.be"
 
 ;Aliasses
+mx.sam-janssens.sb.uclllabs.be	IN	A 	193.191.177.204
+sam-janssens.sb.uclllabs.be	IN	MX	mx.sam-janssens.sb.uclllabs.be
 @		IN	A	193.191.177.204
 ns		IN	A	193.191.177.204
 www		IN	A	193.191.177.204
