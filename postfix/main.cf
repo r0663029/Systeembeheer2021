@@ -11,15 +11,34 @@ append_dot_mydomain = no
 
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-mydestination = sam-janssens.localdomain, localhost.localdomain, localhost, 193.191.176.254
+mydestination = $myhostname, localhost.$mydomain, localhost
 relayhost = 
-mynetworks = 127.0.0.0/8
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 193.191.177.0/24
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/letsencrypt/live/secure.sam-janssens.sb.uclllabs.be/fullchain.pem
+smtpd_tls_key_file=/etc/letsencrypt/live/secure.sam-janssens.sb.uclllabs.be/privkey.pem
+smtpd_use_tls=yes
+smtpd_tls_auth_only = yes
+smtp_tls_security_level = may
+smtpd_tls_security_level = may
+smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_tls_security_options = noanonymous
+
+#restrictions
+smtpd_relay_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        defer_unauth_destination
+
 inet_interfaces = all
 recipient_delimiter = +
 
 compatibility_level = 2
 
 myorigin = /etc/mailname
+myhostname = mx.sam-janssens.sb.uclllabs.be
+mydomain = sb.uclllabs.be
 mailbox_size_limit = 0
 inet_protocols = all
 home_mailbox = Maildir/
