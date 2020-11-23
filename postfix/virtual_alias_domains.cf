@@ -1,0 +1,5 @@
+user = postfix_user
+password = hunter2
+hosts = localhost
+dbname = postfix_db
+query = SELECT alias_domain FROM alias_domain WHERE alias_domain='%s' AND active = '1'
