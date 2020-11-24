@@ -1,6 +1,6 @@
 $TTL	604800
 @	IN	SOA	ns.sam-janssens.sb.uclllabs.be. root.ns.sam-janssens.sb.uclllabs.be. (
-28; Serial
+29; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2420200		; Expire
@@ -26,4 +26,6 @@ test 		IN	A	193.191.177.254
 kom		IN	A	193.191.177.204
 supersecure     IN      A       193.191.177.204
 secure          IN      A       193.191.177.204
+mx		IN	A	193.191.177.204
+@		IN	MX 	5	mx.sam-janssens.sb.uclllabs.be.
 subzoneahher5		IN	NS	ns.sam-janssens.sb.uclllabs.be.
